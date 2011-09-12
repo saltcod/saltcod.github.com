@@ -22,6 +22,17 @@
 	add_action('get_header', 'wpr_maintenance_mode');
 	</pre>
 	
+	
+	<h2>Query a single page</h2>
+	<pre>
+	<?php $my_query = new WP_Query("showposts=1&post_type=page&page_id=31");
+		while ($my_query->have_posts()) : $my_query->the_post();
+		$do_not_duplicate = $post->ID; 	?>
+		<?php the_content(); ?>
+	<?php endwhile; ?>			
+
+	</pre>
+	
   <script src="js/scripts.js"></script>
 </body>
 </html>
