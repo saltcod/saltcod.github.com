@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Second post!
+title: Third Post!
 ---
 
 h1. {{ page.title }}
