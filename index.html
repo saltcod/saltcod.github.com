@@ -1,82 +1,15 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Terry's Github Page</title>
-  <meta name="description" content="The HTML5 Herald">
-  <meta name="author" content="SitePoint">
-  <link rel="stylesheet" href="css/styles.css?v=1.0">
-  <!--[if lt IE 9]>
-  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-</head>
-<body>
-	
-	
-	<script type="text/javascript" src="js/shCore.js"></script>
+---
+layout: default
+title: Terry's Jekyll Test
+---
 
-	<!--
-	    At least one brush, here we choose JS. You need to include a brush for every 
-	    language you want to highlight
-	-->
-	<script type="text/javascript" src="css/shBrushJScript.js"></script>
+<div id="home">
+  <h1>Posts</h1>
+  <ul class="posts">
+    {% for post in site.posts %}
+      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+  </ul>
 
-	<!-- Include *at least* the core style and default theme -->
-	<link href="css/shCore.css" rel="stylesheet" type="text/css" />
-	<link href="css/shThemeDefault.css" rel="stylesheet" type="text/css" />
-
-	<!-- You also need to add some content to highlight, but that is covered elsewhere. -->
-	<pre class="brush: js">
-	function foo()
-	{
-	}
-	</pre>
-
-	<!-- Finally, to actually run the highlighter, you need to include this JS on your page -->
-	<script type="text/javascript">
-	     SyntaxHighlighter.all()
-	</script>
-	
-	
-	
-	<h1>WordPress tips that won't quit</h2>
-	<h2> Maintenance Mode</h2>
-	<pre>
-	function wpr_maintenance_mode() {
-	    if ( !current_user_can( 'edit_themes' ) || !is_user_logged_in() ) {
-	        wp_die('Maintenance, please come back soon.');
-	    }
-	}
-	add_action('get_header', 'wpr_maintenance_mode');
-	</pre>
-	
-	
-	<h2>Query a single page</h2>
-	<pre>
-	<?php $my_query = new WP_Query("showposts=1&post_type=page&page_id=31");
-		while ($my_query->have_posts()) : $my_query->the_post();
-		$do_not_duplicate = $post->ID; 	?>
-		<?php the_content(); ?>
-	<?php endwhile; ?>			
-	</pre>
-
-	<h2>Maintenance Mode</h2>
-	<pre>
-		 function wpr_maintenance_mode() {<br />
-				    if ( !current_user_can( 'edit_themes' ) || !is_user_logged_in() ) {<br />
-				        wp_die('&lt;h2&gt;Maintenance &lt;/h2&gt;&lt;p&gt;Doing a small upgrade, please come back in about an hour!');<br />
-				    }<br />
-				}<br />
-				add_action('get_header', 'wpr_maintenance_mode');
-		</pre>
-
-	<h2>Remove wp-config.php after creating .gitignore</h2>
-	git rm --cached wp-config.php
-	
-	
-
-	
-	
-  <script src="js/scripts.js"></script>
-</body>
-</html>
+   
+</div>
